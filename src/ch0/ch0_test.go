@@ -2,6 +2,12 @@ package ch0
 
 import (
 	"fmt"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/jpeg"
+	"os"
+	"path/filepath"
 	"sync"
 	"testing"
 )
@@ -38,4 +44,37 @@ func TestMultiFor(t *testing.T) {
 	}
 
 	tokenWg.Wait()
+}
+
+func TestFilePath(t *testing.T) {
+	fmt.Println(filepath.Join("G", "F", "G"))
+	fmt.Println(filepath.Join("G/F", "G"))
+	fmt.Println(filepath.Join("gfg", "GFG"))
+	fmt.Println(filepath.Join("Geeks", "for", "Geeks"))
+}
+
+func TestImg(t *testing.T) {
+	m := image.NewRGBA(image.Rect(0, 0, 640, 480))
+	blue := color.RGBA{0, 0, 255, 255}
+	draw.Draw(m, m.Bounds(), &image.Uniform{blue}, image.ZP, draw.Src)
+	//draw.Draw(m, m.Bounds(), image.Transparent, image.ZP, draw.Src)
+}
+
+func TestImg001(t *testing.T) {
+	file, err := os.Create("dst.jpg")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+
+	file1, err := os.Open("20.jpg")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file1.Close()
+	img, _ := jpeg.Decode(file1)
+
+	jpg := image.NewRGBA(image.Rect(0, 0, 100, 100))
+	draw.Draw(jpg, img.Bounds().Add(image.Pt(10, 10)), img, img.Bounds().Min, draw.Src) //截取图片的一部分
+	jpeg.Encode(file, jpg, nil)
 }
