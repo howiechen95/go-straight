@@ -12,7 +12,8 @@
     - 语法
 - 并发
     - go chan
-    - sync
+    - sync 包
+    - [并发模式](https://chai2010.gitbooks.io/advanced-go-programming-book/content/ch1-basic/ch1-06-goroutine.html)
 - 深入
     - GMP
     - pprof
