@@ -13,7 +13,6 @@ func TestNewFromInt64(t *testing.T) {
 
 func TestNewFromBytes(t *testing.T) {
 	str := "12345678"
-
 	NewFromBytes([]byte(str))
 }
 
