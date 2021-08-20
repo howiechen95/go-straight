@@ -1,0 +1,1 @@
+https://github.com/hantmac/Mastering_Go_Second_Edition_Zh_CN/blob/e5e8ce2eeff1d30cd5aa6357f6189c68fb0f13e3/eBook/chapter1/01.15.md
