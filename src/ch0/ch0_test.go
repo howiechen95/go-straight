@@ -6,10 +6,13 @@ import (
 	"image/color"
 	"image/draw"
 	"image/jpeg"
+	"math/rand"
+	"net/url"
 	"os"
 	"path/filepath"
 	"sync"
 	"testing"
+	"time"
 )
 
 func TestSimpleFor(t *testing.T) {
@@ -44,6 +47,33 @@ func TestMultiFor(t *testing.T) {
 	}
 
 	tokenWg.Wait()
+}
+
+func TestMapGroup(t *testing.T) {
+	st1 := time.Now()
+	s := 10000 * 10000
+	list := make([]int64, 0)
+
+	for i := 0; i < s; i++ {
+		list = append(list, rand.Int63n(5000*10000))
+		//fmt.Println(rand.Int63n(5000*10000))
+	}
+	t.Log(len(list))
+	t.Log(float64(time.Now().Sub(st1).Nanoseconds())/1000/1000, "ms")
+}
+
+func TestUrlEncode(t *testing.T) {
+	//str := "!#&=+(){}*%"
+	//str := "摘要 ： 转入"
+	str := "摘要 ：— 转入"
+
+	fmt.Println(str)
+	//fmt.Println(fmt.Sprintf("%s",[]byte(url.QueryEscape(string(str)))))
+	//fmt.Println(fmt.Sprintf("%s",url.QueryEscape(string(str))))
+	//fmt.Println(fmt.Sprintf("%s",url.PathEscape(string(str))))
+	fmt.Println(fmt.Sprintf("%s", url.QueryEscape(string(str))))
+	fmt.Println(fmt.Sprintf("%s", url.PathEscape(string(str))))
+
 }
 
 func TestFilePath(t *testing.T) {
