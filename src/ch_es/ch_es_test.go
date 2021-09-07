@@ -35,10 +35,6 @@ func TestCreateIndex(t *testing.T) {
 				"price": {
 					"type": "double"
 				},
-				"summary": {
-					"type": "text",
-					"analyzer": "ik_max_word"
-				},
 				"author": {
 					"type": "keyword"
 				},
