@@ -1,6 +1,6 @@
 ### Golang
 
-> TODO
+# TODO
 
 - 介绍
     - golang 环境安装配置
@@ -21,9 +21,11 @@
 - 常用包代码示例
   - big
     - [math/big]https://cloud.tencent.com/developer/section/1143071)
-  
 
-    
+# 设计模式
+
+- [mohuishou/go-design-pattern](https://github.com/mohuishou/go-design-pattern)
+
 
 > 书单
  
